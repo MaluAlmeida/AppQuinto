@@ -1,0 +1,52 @@
+﻿@model IEnumerable<AppQuinto.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Cadastrar Clientes";
+}
+
+<h1>Cadastrar Cliente</h1>
+
+
+<div class="table-respon">
+<table class="table">
+    <thead>
+        <tr>
+           <tr>
+                <th scope="col"> @Html.DisplayNameFor(model => model.IdCli) </th>
+                <th scope="col"> @Html.DisplayNameFor(model => model.Cpf) </th>
+                <th scope="col"> @Html.DisplayNameFor(model => model.NomeCli)  </th>
+                <th scope="col"> @Html.DisplayNameFor(model => model.Tel) </th>
+                <th scope="col"> @Html.DisplayNameFor(model => model.DateNasc) </th>
+                <th scope="col">Ação</th>
+            </tr>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Cliente cliente in Model) {
+        <tr>
+                    <td>@cliente.IdCli)</td>
+                    <td>@cliente.Cpf</td>
+                    <td>@cliente.NomeCli</td>
+                     <td>@cliente.Tel</td>
+                    <td>@cliente.DateNasc.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        <button type="button" class="btn btn-warning botaoatualiza">
+                             @Html.ActionLink("Editar", "AtualizarCliente", new { id = cliente.IdCli })
+                        </button>
+
+                        <button type="button" class="btn btn-secondary botaodetalhes">
+                            @Html.ActionLink("Detalhes", "DetalhesCliente", new { id = cliente.IdCli })
+                         </button>
+
+                        <button type="button" class="btn btn-danger botaoexcluir">
+                            @Html.ActionLink("Excluir", "ExcluirCliente", new { id = cliente.IdCli },
+                                        new { onclick = "return confirm('Deseja realmente desativar?');"})
+                        </button>
+                    </td>
+                </tr>
+            }
+    </tbody>
+    </table>
+</div>
+
+<p><a class="btn btn-primary" asp-action="CadastrarCliente" asp-controller="Cliente">Cadastrar</a></p>

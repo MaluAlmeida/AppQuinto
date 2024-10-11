@@ -1,0 +1,47 @@
+﻿@model AppQuinto.Models.Cliente
+
+@{
+    ViewData["Title"] = "CadastrarCliente";
+}
+
+<h1>Cadastrar Cliente</h1>
+
+<h4>Cliente</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CadastrarCliente">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Cpf" class="control-label"></label>
+                <input asp-for="Cpf" class="form-control" />
+                <span asp-validation-for="Cpf" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NomeCli" class="control-label"></label>
+                <input asp-for="NomeCli" class="form-control" />
+                <span asp-validation-for="NomeCli" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tel" class="control-label"></label>
+                <input asp-for="Tel" class="form-control" />
+                <span asp-validation-for="Tel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateNasc" class="control-label"></label>
+                <input asp-for="DateNasc" class="form-control" />
+                <span asp-validation-for="DateNasc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                <a class=" btn btn-secondary" asp-action="Index"> Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
